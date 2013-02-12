@@ -44,7 +44,10 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\2dPlatformControl.js" />
      <Compile Include="Assets\Scripts\3rdPersonInputControl.js" />
+     <Compile Include="Assets\Scripts\GravityFlip.js" />
+     <Compile Include="Assets\Scripts\VariableGravity.js" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
   </ItemGroup>

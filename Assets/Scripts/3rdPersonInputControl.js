@@ -25,7 +25,6 @@ function Update () {
 	if (body.velocity.magnitude < maxForwardVelocity)
 		body.AddForce(forwardForce, ForceMode.Impulse);
 	body.AddTorque(new Vector3(0, turn, 0), ForceMode.VelocityChange);
-	
 }
 
 @script RequireComponent (Rigidbody)
