@@ -1,8 +1,8 @@
 /*********************************
  * Gravity flipping camera script.
  *
- * Author: Mikko Jakonen
- * Version: 0.1
+ * Authors: Mikko Jakonen, Oskari Leppäaho
+ * Version: 0.2
  *********************************/
 #pragma strict
 
@@ -14,8 +14,11 @@ public var rotateThreshold : float = 0.01;
 private var rotateTo : float = 0;
 private var rotating : boolean = false;
 
+//character's transform component
+public var characterTrasform : Transform;
+
 function Update () {
-	var rotate = Input.GetAxis("Rotate");
+	//var rotate = Input.GetAxis("Rotate");
 	
 	if ( Input.GetButtonDown("RotateR") ) {
 		rotate(90);	
@@ -40,6 +43,7 @@ function rotate(relativeAngle:float) {
 /**
  * Use an easing function to rotate the camera a little bit 
  * towards the angle we want.
+ * Also rotate character.
  */
 function smoothRotate(angle:float) {
 	if(!rotating) return;
@@ -53,6 +57,7 @@ function smoothRotate(angle:float) {
 		var factor = easeInOutQuad(t, 0, 1, rotateSpeed);
 		
 		transform.eulerAngles.z = start + (end - start) * factor;
+		characterTrasform.eulerAngles.z = start + (end - start) * factor;
 		
 		t += Time.deltaTime;
 		print(t);
@@ -67,7 +72,7 @@ function smoothRotate(angle:float) {
  * Once rotation is done, flips world gravity.
  */
 function flip() {
-	VariableGravity.change(transform);
+	GlobalVariables.change(transform);
 }
 
 /**

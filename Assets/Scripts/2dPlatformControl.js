@@ -2,8 +2,8 @@
  * Main character controller for 2D platforming
  * with gravity alterations.
  *
- * Author: Mikko Jakonen
- * Version: 0.1
+ * Authors: Mikko Jakonen, Oskari Leppäaho
+ * Version: 0.2
  ************************************************/
 #pragma strict
 
@@ -23,16 +23,27 @@ function Awake() {
 function Update () {
 	var forward = Input.GetAxis("Horizontal");
 	var jump = Input.GetButtonDown("Jump");
-	var force = Vector3.right * forward * forwardForce;
+	
+	//jumpDirection is opposite to gravity
+	var jumpDirection = GlobalVariables.gravity;
+	jumpDirection.Normalize();
+	jumpDirection = -jumpDirection;
+	
+	//forwardDirection is jumpDirection rotated 90 degrees clockwise
+	var quat : Quaternion = Quaternion.AngleAxis(-90,Vector3.forward);
+	var forwardDirection = quat * jumpDirection;
+	var force = forwardDirection * forward * forwardForce;
+	print(forwardDirection.ToString());
+	
 	
 	if (Mathf.Abs(body.velocity.x) < maxForwardVelocity)
 		body.AddForce(force, ForceMode.Impulse);
 	
 	if (jump)
-		body.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+		body.AddForce(jumpDirection * jumpForce, ForceMode.Impulse);
 		
 	
-	body.AddForce(VariableGravity.gravity);
+	body.AddForce(GlobalVariables.gravity);
 }
 
 @script RequireComponent (Rigidbody)
