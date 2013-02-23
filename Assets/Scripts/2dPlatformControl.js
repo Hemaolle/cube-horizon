@@ -3,7 +3,8 @@
  * with gravity alterations.
  *
  * Authors: Mikko Jakonen, Oskari Leppäaho
- * Version: 0.2
+ * Version: 0.3
+ *	 
  ************************************************/
 #pragma strict
 
@@ -16,8 +17,14 @@ public var jumpForce : float = 10.0;
 //maximum speed, no acceleration after this.
 public var maxForwardVelocity : float = 6.0;
 
-function Awake() {
+// for grounded checking
+private var distToGround: float;
+
+//Changed from Awake() to Start() because Unity guys told Awake without no reason could cause bugs.
+function Start() {
 	body = GetComponent(Rigidbody);
+	// get the distance to ground
+  	distToGround = collider.bounds.extents.y;
 }
 
 function Update () {
@@ -29,21 +36,26 @@ function Update () {
 	jumpDirection.Normalize();
 	jumpDirection = -jumpDirection;
 	
-	//forwardDirection is jumpDirection rotated 90 degrees clockwise
-	var quat : Quaternion = Quaternion.AngleAxis(-90,Vector3.forward);
-	var forwardDirection = quat * jumpDirection;
-	var force = forwardDirection * forward * forwardForce;
-	print(forwardDirection.ToString());
+	var forwardDirection = GlobalVariables.forwardDirection;
+	var force = forwardDirection * forward * forwardForce;	
 	
-	
-	if (Mathf.Abs(body.velocity.x) < maxForwardVelocity)
+	//By projecting body.velocity to forwardDirection, we get the component
+	//of velocity that is parallel to forwardDirection.
+	//We also want to apply the force if it's direction is opposite to current speed.
+	if (Vector3.Project(body.velocity,forwardDirection).magnitude < maxForwardVelocity
+	|| Vector3.Angle(Vector3.Project(body.velocity,forwardDirection),force) > 170 )
 		body.AddForce(force, ForceMode.Impulse);
 	
-	if (jump)
-		body.AddForce(jumpDirection * jumpForce, ForceMode.Impulse);
-		
+	if (jump && IsGrounded())
+		body.AddForce(jumpDirection * jumpForce, ForceMode.Impulse);		
 	
-	body.AddForce(GlobalVariables.gravity);
+	body.AddForce(GlobalVariables.gravity * body.mass);
+}
+
+function IsGrounded(): boolean {
+	var gravityDirection = GlobalVariables.gravity;
+	gravityDirection.Normalize();
+  	return Physics.Raycast(transform.position, gravityDirection, distToGround + 0.1);
 }
 
 @script RequireComponent (Rigidbody)
