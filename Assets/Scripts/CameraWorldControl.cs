@@ -43,8 +43,6 @@ public class CameraWorldControl : MonoBehaviour
             rotateY = true;
             StartCoroutine(DoRotate());
         } 
-
-        //if (rotating != 0) DoRotate();
     }
 
     IEnumerator DoRotate()
@@ -52,34 +50,30 @@ public class CameraWorldControl : MonoBehaviour
         float rotationAmount = rotating * 90;
         float t = 0.0f;
         float rate = 1 / rotationSeconds;
+        float start, end, previous;
 
-        Quaternion originalAngle = transform.rotation;
-        Quaternion targetAngle;
-
-        if (!rotateY) targetAngle = originalAngle * Quaternion.Euler(0, 0, rotationAmount);
-        else targetAngle = originalAngle * Quaternion.Euler(0, rotationAmount, 0);
+        if (!rotateY) start = transform.eulerAngles.z;
+        else start = transform.eulerAngles.y;
+        end = start + rotationAmount;
+        previous = start;
 
         while (true)
-        {            
-            Vector3 angles = transform.eulerAngles;
+        {
+            float factor = rotationCurve.Evaluate(t);
 
             if (!rotateY)
             {
-                angles.z = originalAngle.eulerAngles.z + rotationCurve.Evaluate(t) * rotationAmount;
+                transform.Rotate(0, 0, start + (end - start) * factor - previous);
+                previous = start + (end - start) * factor;
             }
             else
             {
-                angles.y = originalAngle.eulerAngles.y + rotationCurve.Evaluate(t) * rotationAmount;
+                transform.Rotate(0, start + (end - start) * factor - previous, 0);
+                previous = start + (end - start) * factor;
             }
 
-            if (!rotateY)
-            {
-                if (Mathf.Abs(transform.eulerAngles.z - targetAngle.eulerAngles.z) < 0.001) break;
-            }
-            else if (Mathf.Abs(transform.eulerAngles.y - targetAngle.eulerAngles.y) < 0.001) break;
+            if (Mathf.Abs(previous - end) < 0.001f) break; //stop when we reach target angle
           
-
-            transform.eulerAngles = angles;
             t += rate * Time.deltaTime;
 
             Globals.ChangeGravity(transform);
