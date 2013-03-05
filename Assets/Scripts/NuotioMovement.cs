@@ -50,7 +50,7 @@ public class NuotioMovement : MonoBehaviour
         Vector3 force = transform.TransformDirection(Vector3.right) * Input.GetAxis("Horizontal") * acceleration;
         
         if (Vector3.Project(body.velocity, transform.TransformDirection(Vector3.right)).magnitude < maxMoveSpeed
-            /*|| Vector3.Angle(Vector3.Project(body.velocity, transform.TransformDirection(Vector3.right)), force) > 170*/)
+            || Vector3.Angle(Vector3.Project(body.velocity, transform.TransformDirection(Vector3.right)), force) > 170)
         {
             body.AddForce(force, ForceMode.Impulse);
         }
