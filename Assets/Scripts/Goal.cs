@@ -1,3 +1,10 @@
+/*********************************
+ * New level is loaded when player enters goal.
+ *
+ * Author: Oskari Leppäaho
+ * Version: 0.1
+ *********************************/
+
 using UnityEngine;
 using System.Collections;
 
