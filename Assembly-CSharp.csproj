@@ -47,7 +47,9 @@
      <Compile Include="Assets\Scripts\CameraTrigger.cs" />
      <Compile Include="Assets\Scripts\CameraWorldControl.cs" />
      <Compile Include="Assets\Scripts\Globals.cs" />
+     <Compile Include="Assets\Scripts\Goal.cs" />
      <Compile Include="Assets\Scripts\NuotioMovement.cs" />
+     <Compile Include="Assets\Scripts\Perimeter.cs" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
   </ItemGroup>

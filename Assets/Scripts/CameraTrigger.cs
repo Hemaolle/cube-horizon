@@ -11,21 +11,15 @@ public class CameraTrigger : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-		if (other.tag != "Finish" && other.tag != "Respawn")
-		{
-	        Color color = other.gameObject.renderer.material.color;
-	        color.a = 0.5f;
-	        other.gameObject.renderer.material.color = color;
-		}
+        Color color = other.gameObject.renderer.material.color;
+        color.a = 0.5f;
+        other.gameObject.renderer.material.color = color;
     }
 
     void OnTriggerExit(Collider other)
     {
-		if (other.tag != "Finish" && other.tag != "Respawn")
-		{
-	        Color color = other.gameObject.renderer.material.color;
-	        color.a = 1f;
-	        other.gameObject.renderer.material.color = color;
-		}
+        Color color = other.gameObject.renderer.material.color;
+        color.a = 1f;
+        other.gameObject.renderer.material.color = color;
     }
 }
