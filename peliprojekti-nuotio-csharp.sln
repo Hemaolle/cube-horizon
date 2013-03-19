@@ -1,8 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
-Project("{A6469615-9DFD-0397-5797-3F4484F42868}") = "peliprojekti-nuotio", "Assembly-CSharp-firstpass-vs.csproj", "{79695834-7FB1-0B92-9627-8243A0735B98}"
-EndProject
 Project("{A6469615-9DFD-0397-5797-3F4484F42868}") = "peliprojekti-nuotio", "Assembly-CSharp-vs.csproj", "{E176BCA7-159F-1525-909D-A4295E2DD297}"
 EndProject
 Global
@@ -11,10 +9,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{79695834-7FB1-0B92-9627-8243A0735B98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{79695834-7FB1-0B92-9627-8243A0735B98}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{79695834-7FB1-0B92-9627-8243A0735B98}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{79695834-7FB1-0B92-9627-8243A0735B98}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E176BCA7-159F-1525-909D-A4295E2DD297}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E176BCA7-159F-1525-909D-A4295E2DD297}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E176BCA7-159F-1525-909D-A4295E2DD297}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -23,7 +17,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-												GlobalSection(MonoDevelopProperties) = preSolution
+														GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
