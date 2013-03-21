@@ -22,7 +22,7 @@ public class NuotioMovement : MonoBehaviour
     public float terminalVelocity;
 
    
-    private Vector3 v = Vector3.zero;
+    //private Vector3 v = Vector3.zero;
     private float distToGround;
     private Rigidbody body;
 
@@ -75,6 +75,7 @@ public class NuotioMovement : MonoBehaviour
 
     private bool isGrounded()
     {
-        return Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), distToGround + 0.1f);
+		int layermask = 1; //Only check default layer
+        return Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), distToGround + 0.1f, layermask);
     }
 }

@@ -9,17 +9,25 @@
 using UnityEngine;
 using System.Collections;
 
-class Perimeter : MonoBehaviour
+class Perimeter : MonoBehaviour 
 {
-    public GameObject respawnAt;
+    private GameObject respawnAt;
+	
+	void Start()
+	{
+		respawnAt = GameObject.Find("Start");	
+	}
 
     void OnTriggerExit(Collider other)
     {   
-        if (other.tag == "Player")
+       //If some child of character collides we still want the whole character.
+		GameObject rootObject = other.transform.root.gameObject;
+		
+		if (rootObject.tag == "Player")
         {
-            other.gameObject.transform.position = respawnAt.transform.position;
-            other.gameObject.transform.rotation = respawnAt.transform.rotation;
-            other.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            rootObject.transform.position = respawnAt.transform.position;
+            rootObject.transform.rotation = respawnAt.transform.rotation;
+            rootObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
     }
 }
