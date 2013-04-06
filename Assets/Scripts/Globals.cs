@@ -1,7 +1,7 @@
 /****************************************
  * Global variables for the Nuotio game
  * 
- * Author: Mikko Jakonen, Oskari Lepp‰aho
+ * Author: Mikko Jakonen, Oskari Lepp√§aho
  * Version: 0.2 
  ***************************************/
 using UnityEngine;
@@ -12,6 +12,8 @@ public class Globals : MonoBehaviour {
     //private static float gravityMultiplier = 50;
     private static Vector3 gravity = Vector3.down;
     private static Vector3 forwardDirection = Vector3.right;
+	public static int maxMinerals = 0;
+	public static int currentMinerals = 0;
 
     public static Vector3 GravityDirection
     {
@@ -21,7 +23,7 @@ public class Globals : MonoBehaviour {
     {
         get { return forwardDirection;  }
     }
-
+	
     public static void ChangeGravity(Transform transform)
     {
         gravity = transform.TransformDirection(Vector3.down);
