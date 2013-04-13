@@ -5,8 +5,7 @@ public class MineralControl : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Globals.maxMinerals++;
-		Globals.currentMinerals++;
+		Globals.maxMinerals++;		
 	}
 	
 	// Update is called once per frame
@@ -19,7 +18,7 @@ public class MineralControl : MonoBehaviour {
 		if (collider.gameObject.tag.Equals("Player"))
 		{
 			Destroy(gameObject);
-			Globals.currentMinerals--;	
+			Globals.currentMinerals++;	
 		}
 	}
 }
