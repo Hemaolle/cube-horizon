@@ -1,8 +1,9 @@
 /**********************************************************************
- * Camera controlling and gravity flippnig script
+ * Camera controlling and gravity flippnig script. Also includes
+ * zooming out.
  * 
  * Author: Mikko Jakonen, Oskari Leppäaho
- * Version: 0.4 
+ * Version: 0.5
  **********************************************************************/
 using UnityEngine;
 using System.Collections;
@@ -11,11 +12,23 @@ public class CameraWorldControl : MonoBehaviour
 {
     public AnimationCurve rotationCurve;
     public float rotationSeconds = 1.0f;
+    public float zoomedZ = -120.0f;
+    public float zoomSeconds = 1.0f;
 
     //direction of rotation: 1 = clockwise, -1 = counter-clockwise, 0 = no rotation
     private int rotating = 0;
     //when set to true, DoRotate() rotates y-axis
     private bool rotateY = false;
+    //zooming: 1 = in, -1 = out, 0 = no zoom
+    private bool zooming = false;
+
+    private float initialZ;
+    private bool zoomedOut = false;
+
+    void Start()
+    {
+        initialZ = GetComponentInChildren<Camera>().transform.position.z;
+    }
 
     void Update () 
     {
@@ -42,6 +55,12 @@ public class CameraWorldControl : MonoBehaviour
             rotating = 1;
             rotateY = true;
             StartCoroutine(DoRotate());
+        }
+
+        if (Input.GetButtonDown("Zoom") && !zooming)
+        {
+            zooming = true;
+            StartCoroutine(DoZoom());
         } 
     }
 
@@ -82,4 +101,30 @@ public class CameraWorldControl : MonoBehaviour
 
         rotating = 0;
     }
+
+    IEnumerator DoZoom()
+    {
+        Camera camera = GetComponentInChildren<Camera>();
+        float start = camera.transform.position.z;
+        float end = zoomedOut ? zoomedZ : initialZ;
+        float t = 0.0f;
+        float rate = 1 / zoomSeconds;
+
+        while (true)
+        {
+            float factor = rotationCurve.Evaluate(t);
+            Vector3 pos = camera.transform.position;
+            pos.z = start + (end - start) * factor;
+
+            camera.transform.position = pos;
+            if (Mathf.Abs(pos.z - end) < 0.001f) break;
+
+            t += Time.deltaTime * rate;
+            yield return null;
+        }
+        if (!zoomedOut) zoomedOut = true;
+        else zoomedOut = false;
+        zooming = false;
+    }
+
 }
