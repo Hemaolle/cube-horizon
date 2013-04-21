@@ -23,6 +23,7 @@ public class NuotioMovement : MonoBehaviour
 
    
     //private Vector3 v = Vector3.zero;
+    private bool grounded;
     private float distToGround;
     private Rigidbody body;
 
@@ -75,7 +76,7 @@ public class NuotioMovement : MonoBehaviour
 
     private bool isGrounded()
     {
-		int layermask = 1; //Only check default layer
+        int layermask = 1; //Only check default layer
         return Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), distToGround + 0.1f, layermask);
     }
 }

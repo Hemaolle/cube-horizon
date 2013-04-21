@@ -29,6 +29,7 @@ public class TextAndOrAudioTrigger : MonoBehaviour {
 	public bool displayOnlyOnce = false;
 	public bool displayText = true;
 	public bool playAudio = true;
+	public static string latestText;
 	
 	private GameObject guiTextObject;
 	
@@ -39,7 +40,8 @@ public class TextAndOrAudioTrigger : MonoBehaviour {
 	
 	IEnumerator OnTriggerEnter(Collider collider)
 	{
-		Debug.Log("Hit Trigger");
+		latestText = textToDisplay;
+		
 		gameObject.collider.enabled = false;
 		if(playAudio && audio.clip != null)
 			audio.Play();
@@ -52,8 +54,11 @@ public class TextAndOrAudioTrigger : MonoBehaviour {
 		
 		yield return new WaitForSeconds(displayDuration);
 		
-		if(displayText)			
+		if(displayText && latestText == textToDisplay)			
+		{
 			guiTextObject.guiText.enabled = false;			
+			Debug.Log("Hiding text: " + textToDisplay);	
+		}
 				
 		yield return new WaitForSeconds(pauseBetweenDisplays);
 		

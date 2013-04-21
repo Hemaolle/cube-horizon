@@ -12,18 +12,18 @@ using System.Collections;
 class Perimeter : MonoBehaviour 
 {
     private GameObject respawnAt;
-	
-	void Start()
-	{
-		respawnAt = GameObject.Find("Start");	
-	}
+    
+    void Start()
+    {
+        respawnAt = GameObject.Find("Start");	
+    }
 
     void OnTriggerExit(Collider other)
     {   
        //If some child of character collides we still want the whole character.
-		GameObject rootObject = other.transform.root.gameObject;
-		
-		if (rootObject.tag == "Player")
+        GameObject rootObject = other.transform.root.gameObject;
+        
+        if (rootObject.tag == "Player")
         {
             rootObject.transform.position = respawnAt.transform.position;
             rootObject.transform.rotation = respawnAt.transform.rotation;
