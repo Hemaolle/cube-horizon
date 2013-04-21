@@ -12,7 +12,7 @@ public class CameraWorldControl : MonoBehaviour
 {
     public AnimationCurve rotationCurve;
     public float rotationSeconds = 1.0f;
-    public float zoomedZ = -120.0f;
+    public float zoomAmount = 100.0f;
     public float zoomSeconds = 1.0f;
 
     //direction of rotation: 1 = clockwise, -1 = counter-clockwise, 0 = no rotation
@@ -22,13 +22,8 @@ public class CameraWorldControl : MonoBehaviour
     //zooming: 1 = in, -1 = out, 0 = no zoom
     private bool zooming = false;
 
-    private float initialZ;
+    private float returnZ;
     private bool zoomedOut = false;
-
-    void Start()
-    {
-        initialZ = GetComponentInChildren<Camera>().transform.position.z;
-    }
 
     void Update () 
     {
@@ -105,25 +100,34 @@ public class CameraWorldControl : MonoBehaviour
     IEnumerator DoZoom()
     {
         Camera camera = GetComponentInChildren<Camera>();
-        float start = camera.transform.position.z;
-        float end = zoomedOut ? zoomedZ : initialZ;
+        Vector3 start = camera.transform.position;
+        Vector3 end = start + transform.TransformDirection(Vector3.back) * zoomAmount;
+        if (zoomedOut) end = start - transform.TransformDirection(Vector3.back) * zoomAmount;
         float t = 0.0f;
         float rate = 1 / zoomSeconds;
+
+        NuotioMovement movement = GetComponent<NuotioMovement>();
+        movement.enabled = false;
+        movement.FullStop();
 
         while (true)
         {
             float factor = rotationCurve.Evaluate(t);
-            Vector3 pos = camera.transform.position;
-            pos.z = start + (end - start) * factor;
+            Vector3 current = camera.transform.position;
+            current = start + (end - start) * factor;
 
-            camera.transform.position = pos;
-            if (Mathf.Abs(pos.z - end) < 0.001f) break;
+            camera.transform.position = current;
+            if (t > 1.0f) break;
 
             t += Time.deltaTime * rate;
             yield return null;
         }
         if (!zoomedOut) zoomedOut = true;
-        else zoomedOut = false;
+        else
+        {
+            zoomedOut = false;
+            movement.enabled = true;
+        }
         zooming = false;
     }
 

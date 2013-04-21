@@ -79,4 +79,11 @@ public class NuotioMovement : MonoBehaviour
         int layermask = 1; //Only check default layer
         return Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), distToGround + 0.1f, layermask);
     }
+
+
+    // Stop movement and clear all forces.
+    public void FullStop()
+    {
+        body.Sleep();
+    }
 }
