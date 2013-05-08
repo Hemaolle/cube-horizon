@@ -19,10 +19,21 @@ public class MineralControl : MonoBehaviour {
 		{
 			foreach(Transform child in transform.parent) {
 				if (child.gameObject.name == "RespawnLocation")
+					child.transform.rotation = ChangeToNext90Degrees(collider.transform.rotation);
 					Globals.respawnAt = child.gameObject;
 			}
 			Destroy(gameObject);
 			Globals.currentMinerals++;	
 		}
+	}
+						
+	private Quaternion ChangeToNext90Degrees(Quaternion rot) {
+		Vector3 eulerAngles = rot.eulerAngles;
+		
+		eulerAngles.x = eulerAngles.x - eulerAngles.x % 90;
+		eulerAngles.y = eulerAngles.y - eulerAngles.y % 90;
+		eulerAngles.z = eulerAngles.z - eulerAngles.z % 90;
+		
+		return Quaternion.Euler(eulerAngles);
 	}
 }
