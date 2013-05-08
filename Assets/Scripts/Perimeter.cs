@@ -15,7 +15,7 @@ class Perimeter : MonoBehaviour
     
     void Start()
     {
-        respawnAt = GameObject.Find("Start");	
+        Globals.respawnAt = GameObject.Find("Start");	
     }
 
     void OnTriggerExit(Collider other)
@@ -25,8 +25,8 @@ class Perimeter : MonoBehaviour
         
         if (rootObject.tag == "Player")
         {
-            rootObject.transform.position = respawnAt.transform.position;
-            rootObject.transform.rotation = respawnAt.transform.rotation;
+            rootObject.transform.position = Globals.respawnAt.transform.position;
+            rootObject.transform.rotation = Globals.respawnAt.transform.rotation;
             rootObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
     }

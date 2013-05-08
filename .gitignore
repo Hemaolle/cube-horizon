@@ -5,3 +5,5 @@ Library
 *.pidb
 *.sln
 /obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+*.sln
+*.unityproj
