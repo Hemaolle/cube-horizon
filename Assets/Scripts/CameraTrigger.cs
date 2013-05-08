@@ -11,15 +11,19 @@ public class CameraTrigger : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        Color color = other.gameObject.renderer.material.color;
-        color.a = 0.5f;
-        other.gameObject.renderer.material.color = color;
+		if (other.renderer != null) {			
+	        Color color = other.gameObject.renderer.material.color;
+	        color.a = 0.5f;
+	        other.gameObject.renderer.material.color = color;
+		}
     }
 
     void OnTriggerExit(Collider other)
     {
-        Color color = other.gameObject.renderer.material.color;
-        color.a = 1f;
-        other.gameObject.renderer.material.color = color;
+		if (other.renderer != null) {		
+	        Color color = other.gameObject.renderer.material.color;
+	        color.a = 1f;
+	        other.gameObject.renderer.material.color = color;
+		}
     }
 }
