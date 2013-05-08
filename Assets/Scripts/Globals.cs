@@ -14,6 +14,7 @@ public class Globals : MonoBehaviour {
     private static Vector3 forwardDirection = Vector3.right;
     public static int maxMinerals = 0;
     public static int currentMinerals = 0;
+	public static GameObject respawnAt;
 
     public static Vector3 GravityDirection
     {

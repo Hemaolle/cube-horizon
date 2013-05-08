@@ -17,6 +17,10 @@ public class MineralControl : MonoBehaviour {
 	{
 		if (collider.gameObject.tag.Equals("Player"))
 		{
+			foreach(Transform child in transform.parent) {
+				if (child.gameObject.name == "RespawnLocation")
+					Globals.respawnAt = child.gameObject;
+			}
 			Destroy(gameObject);
 			Globals.currentMinerals++;	
 		}

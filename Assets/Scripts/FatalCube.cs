@@ -16,7 +16,7 @@ public class FatalCube : MonoBehaviour {
 	
 	void Start()
 	{
-		respawnAt = GameObject.Find("Start");	
+		//respawnAt = GameObject.Find("Start");	
 		fatalAudio = GameObject.Find("FatalAudioSource");	
 	}
 	
@@ -34,8 +34,8 @@ public class FatalCube : MonoBehaviour {
 			
 			rootObject.rigidbody.isKinematic = false;
 			
-            rootObject.transform.position = respawnAt.transform.position;
-            rootObject.transform.rotation = respawnAt.transform.rotation;
+            rootObject.transform.position = Globals.respawnAt.transform.position;
+            rootObject.transform.rotation = Globals.respawnAt.transform.rotation;
             rootObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
 		
