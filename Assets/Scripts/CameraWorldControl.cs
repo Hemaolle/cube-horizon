@@ -27,25 +27,25 @@ public class CameraWorldControl : MonoBehaviour
 
     void Update () 
     {
-        if (Input.GetButtonDown("RotateR") && rotating == 0)
+        if (Input.GetButtonDown("RotateR") && rotating == 0 && !zoomedOut)
         {
             rotating = -1;
             rotateY = false;
             StartCoroutine(DoRotate());
         }
-        if (Input.GetButtonDown("RotateL") && rotating == 0)
+        if (Input.GetButtonDown("RotateL") && rotating == 0 && !zoomedOut)
         {
             rotating = 1;
             rotateY = false;
             StartCoroutine(DoRotate());
         }
-        if (Input.GetButtonDown("RotateR2") && rotating == 0)
+        if (Input.GetButtonDown("RotateR2") && rotating == 0 && !zoomedOut)
         {
             rotating = -1;
             rotateY = true;
             StartCoroutine(DoRotate());
         }
-        if (Input.GetButtonDown("RotateL2") && rotating == 0)
+        if (Input.GetButtonDown("RotateL2") && rotating == 0 && !zoomedOut)
         {
             rotating = 1;
             rotateY = true;
