@@ -1,10 +1,9 @@
-/*****************************************************
- * Script for turning off lights when mineral is collected.
+/*****************************************************************
+ * Script for turning off lights when nearby mineral is collected.
  * 
  * Author: Mikko Jakonen
- * Version: 0.5
- *****************************************************/
-
+ * Version: 0.6
+ *****************************************************************/
 using UnityEngine;
 using System.Collections;
 
@@ -32,14 +31,15 @@ public class MineralLight : MonoBehaviour {
         if (lightsOn && mineral == null) StartCoroutine(Flicker());
     }
     
-    //turn of all lights 
+    /** Turns off all lightbulbs on this object. */
     void LightsOut() 
     {	
         foreach(Light l in GetComponentsInChildren<Light>()) 
         {
+            //disable light:
             l.enabled = false;
-            //l.gameObject.GetComponent<LensFlare>().enabled = false;
-			//if(l.gameObject.GetComponent<Halo>() != null) l.gameObject.GetComponent<Halo>().enabled = false;
+
+            //color material black:
             Color c = l.gameObject.transform.parent.gameObject.renderer.material.color;
             c.r = 0.1f; c.g = 0.1f; c.b = 0.1f;
             l.gameObject.transform.parent.gameObject.renderer.material.color = c;
@@ -47,32 +47,30 @@ public class MineralLight : MonoBehaviour {
         lightsOn = false;
     }
     
+    /** Flickers lightbulbs before turning off. */
     IEnumerator Flicker() 
     {
         yield return new WaitForSeconds(flickerDelay);
         float t = 0.0f;
         Light[] lights = GetComponentsInChildren<Light>();
-        LensFlare[] flares = GetComponentsInChildren<LensFlare>();
-		//Halo[] halos = GetComponentsInChildren<Halo>();
 
         while (t < flickerTime) 
         {
             foreach (Light l in lights) 
-            {
-                l.intensity = Mathf.Sin(t * flickerSpeed) * 8.0f;
+            {                
+                //randomize intensity of light:
+                l.intensity = Random.Range(0, 8.0f);
+                Color c = l.gameObject.transform.parent.renderer.material.color;
+                
+                //randomize "lightness" of material color on the lightbulb:
+                float newColor = Random.Range(0, 1.0f);
+                c.r = newColor; c.g = newColor; c.b = newColor;
+                l.gameObject.transform.parent.renderer.material.color = c;
             }
-            foreach (LensFlare f in flares)
-            {
-                f.brightness = Mathf.Sin(t * flickerSpeed) * 1.0f;
-            }
-			/*foreach (Halo h in flares)
-            {
-                h.size = Mathf.Sin(t * flickerSpeed) * 1.0f;
-            }*/
             
             t += Time.deltaTime;
-            
-            yield return null;
+
+            yield return new WaitForSeconds(1/flickerSpeed);
         }
         
         LightsOut();
