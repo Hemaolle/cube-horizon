@@ -14,7 +14,7 @@ public class CameraWorldControl : MonoBehaviour
     public float rotationSeconds = 1.0f;
     public float zoomAmount = 100.0f;
     public float zoomSeconds = 1.0f;
-
+	public GameObject character;
     //direction of rotation: 1 = clockwise, -1 = counter-clockwise, 0 = no rotation
     private int rotating = 0;
     //when set to true, DoRotate() rotates y-axis
@@ -52,7 +52,7 @@ public class CameraWorldControl : MonoBehaviour
             StartCoroutine(DoRotate());
         }
 
-        if (Input.GetButtonDown("Zoom") && !zooming)
+        if (Input.GetButtonDown("Zoom") && !zooming && gameObject.name == "CamFollow")
         {
             zooming = true;
             StartCoroutine(DoZoom());
@@ -65,7 +65,9 @@ public class CameraWorldControl : MonoBehaviour
         float t = 0.0f;
         float rate = 1 / rotationSeconds;
         float start, end, previous;
-
+		MeshMovement movement = character.GetComponent<MeshMovement>();
+		
+		
         if (!rotateY) start = transform.eulerAngles.z;
         else start = transform.eulerAngles.y;
         end = start + rotationAmount;
@@ -77,7 +79,11 @@ public class CameraWorldControl : MonoBehaviour
 
             if (!rotateY)
             {
-                transform.Rotate(0, 0, start + (end - start) * factor - previous);
+				if (gameObject.name == "CamFollow")
+					transform.Rotate(-(start + (end - start) * factor - previous),0,0);
+                //transform.Rotate(0,0,-(start + (end - start) * factor - previous));
+				else
+					transform.Rotate(movement.goingForward * -(start + (end - start) * factor - previous),0,0);
                 previous = start + (end - start) * factor;
             }
             else
@@ -105,8 +111,9 @@ public class CameraWorldControl : MonoBehaviour
         if (zoomedOut) end = start - transform.TransformDirection(Vector3.back) * zoomAmount;
         float t = 0.0f;
         float rate = 1 / zoomSeconds;
-
-        NuotioMovement movement = GetComponent<NuotioMovement>();
+		
+		
+        MeshMovement movement = character.GetComponent<MeshMovement>();
         movement.enabled = false;
         movement.FullStop();
 

@@ -17,11 +17,16 @@ public class MineralControl : MonoBehaviour {
 	{
 		if (collider.gameObject.tag.Equals("Player"))
 		{
-			foreach(Transform child in transform.parent) {
+			/*foreach(Transform child in transform.parent) {
 				if (child.gameObject.name == "RespawnLocation")
 					child.transform.rotation = ChangeToNext90Degrees(collider.transform.rotation);
 					Globals.respawnAt = child.gameObject;
-			}
+			}*/
+			GameObject respawn = new GameObject("Respawn");
+			respawn.transform.position = transform.position;
+			respawn.transform.rotation = ChangeToNext90Degrees(collider.gameObject.transform.rotation);
+			Globals.respawnAt = respawn;
+			
 			Destroy(gameObject);
 			Globals.currentMinerals++;	
 		}

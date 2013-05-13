@@ -57,7 +57,7 @@ public class TextAndOrAudioTrigger : MonoBehaviour {
 		if(displayText && latestText == textToDisplay)			
 		{
 			guiTextObject.guiText.enabled = false;			
-			Debug.Log("Hiding text: " + textToDisplay);	
+			//Debug.Log("Hiding text: " + textToDisplay);	
 		}
 				
 		yield return new WaitForSeconds(pauseBetweenDisplays);

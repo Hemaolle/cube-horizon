@@ -13,11 +13,15 @@ public class FatalCube : MonoBehaviour {
 	
 	private GameObject respawnAt;
 	private GameObject fatalAudio;
+	private GameObject camFollow;
+	private GameObject character;
 	
 	void Start()
 	{
 		//respawnAt = GameObject.Find("Start");	
-		fatalAudio = GameObject.Find("FatalAudioSource");	
+		fatalAudio = GameObject.Find("FatalAudioSource");
+		camFollow = GameObject.Find("CamFollow");
+		character = GameObject.Find("AnimatedCharacter");
 	}
 	
 	IEnumerator OnCollisionEnter(Collision collision)
@@ -36,6 +40,9 @@ public class FatalCube : MonoBehaviour {
 			
             rootObject.transform.position = Globals.respawnAt.transform.position;
             rootObject.transform.rotation = Globals.respawnAt.transform.rotation;
+			camFollow.transform.rotation = Globals.respawnAt.transform.rotation;
+			MeshMovement movement = character.GetComponent<MeshMovement>();
+			movement.goingForward = 1;
             rootObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
 		

@@ -152,7 +152,7 @@ ModelImporter:
     400138: wristLeft
     400140: wristRight
     4300000: Lerpz
-    7400000: Take 001
+    7400000: fallpose
     7400002: walk
     7400004: run
     7400006: kick
@@ -203,9 +203,10 @@ ModelImporter:
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
+      keepAdditionalBonesAnimation: 1
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      transformMask: []
+      skeletonMaskElements: []
     - name: run
       takeName: 
       firstFrame: 41
@@ -224,9 +225,10 @@ ModelImporter:
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
+      keepAdditionalBonesAnimation: 1
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      transformMask: []
+      skeletonMaskElements: []
     - name: kick
       takeName: 
       firstFrame: 81
@@ -245,9 +247,10 @@ ModelImporter:
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
+      keepAdditionalBonesAnimation: 1
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      transformMask: []
+      skeletonMaskElements: []
     - name: punch
       takeName: 
       firstFrame: 101
@@ -266,9 +269,10 @@ ModelImporter:
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
+      keepAdditionalBonesAnimation: 1
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      transformMask: []
+      skeletonMaskElements: []
     - name: jump
       takeName: 
       firstFrame: 121
@@ -287,9 +291,10 @@ ModelImporter:
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
+      keepAdditionalBonesAnimation: 1
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      transformMask: []
+      skeletonMaskElements: []
     - name: jumpfall
       takeName: 
       firstFrame: 149
@@ -308,9 +313,10 @@ ModelImporter:
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
+      keepAdditionalBonesAnimation: 1
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      transformMask: []
+      skeletonMaskElements: []
     - name: idle
       takeName: 
       firstFrame: 201
@@ -329,9 +335,10 @@ ModelImporter:
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
+      keepAdditionalBonesAnimation: 1
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      transformMask: []
+      skeletonMaskElements: []
     - name: gotbit
       takeName: 
       firstFrame: 411
@@ -350,9 +357,10 @@ ModelImporter:
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
+      keepAdditionalBonesAnimation: 1
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      transformMask: []
+      skeletonMaskElements: []
     - name: gothit
       takeName: 
       firstFrame: 421
@@ -371,9 +379,10 @@ ModelImporter:
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
+      keepAdditionalBonesAnimation: 1
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      transformMask: []
+      skeletonMaskElements: []
     - name: walljump
       takeName: 
       firstFrame: 431
@@ -392,9 +401,10 @@ ModelImporter:
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
+      keepAdditionalBonesAnimation: 1
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      transformMask: []
+      skeletonMaskElements: []
     - name: deathfall
       takeName: 
       firstFrame: 451
@@ -413,9 +423,10 @@ ModelImporter:
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
+      keepAdditionalBonesAnimation: 1
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      transformMask: []
+      skeletonMaskElements: []
     - name: jetpackjump
       takeName: 
       firstFrame: 149
@@ -434,9 +445,10 @@ ModelImporter:
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
+      keepAdditionalBonesAnimation: 1
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      transformMask: []
+      skeletonMaskElements: []
     - name: ledgefall
       takeName: 
       firstFrame: 149
@@ -455,9 +467,10 @@ ModelImporter:
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
+      keepAdditionalBonesAnimation: 1
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      transformMask: []
+      skeletonMaskElements: []
     - name: buttstomp
       takeName: 
       firstFrame: 137
@@ -476,9 +489,10 @@ ModelImporter:
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
+      keepAdditionalBonesAnimation: 1
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      transformMask: []
+      skeletonMaskElements: []
     - name: jumpland
       takeName: 
       firstFrame: 161
@@ -497,21 +511,42 @@ ModelImporter:
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
+      keepAdditionalBonesAnimation: 1
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      transformMask: []
+      skeletonMaskElements: []
+    - name: fallpose
+      takeName: Take 001
+      firstFrame: 149
+      lastFrame: 149.100006
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      keepAdditionalBonesAnimation: 1
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      skeletonMaskElements: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
     addColliders: 0
-    importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
-    weldVertices: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
@@ -531,8 +566,8 @@ ModelImporter:
         min: {x: -40, y: -40, z: -40}
         max: {x: 40, y: 40, z: 40}
         value: {x: .180499792, y: 0, z: .090249896}
-        preQ: {x: .487775564, y: .511932611, z: -.487775654, w: -.511932433}
-        postQ: {x: -.0170816183, y: .706900477, z: -.706900418, w: -.0170814395}
+        preQ: {x: .487775594, y: .511932611, z: -.487775683, w: -.511932492}
+        postQ: {x: -.0170816183, y: .706900418, z: -.706900418, w: -.0170814395}
         length: .22562474
         modified: 1
     - boneName: hipLeft
@@ -541,8 +576,8 @@ ModelImporter:
         min: {x: -60.0000038, y: -60.0000038, z: -90}
         max: {x: 60.0000038, y: 60.0000038, z: 50}
         value: {x: .269127816, y: 0, z: .134563908}
-        preQ: {x: .652965784, y: .222752422, z: .271358907, w: -.67110461}
-        postQ: {x: .699588418, y: .0602416992, z: .0740908086, w: -.708136678}
+        preQ: {x: .652965844, y: .222752467, z: .271358907, w: -.67110461}
+        postQ: {x: .699588478, y: .0602417216, z: .0740907714, w: -.708136678}
         length: .336409748
         modified: 1
     - boneName: hipRight
@@ -551,8 +586,8 @@ ModelImporter:
         min: {x: -60.0000038, y: -60.0000038, z: -90}
         max: {x: 60.0000038, y: 60.0000038, z: 50}
         value: {x: .269127905, y: 0, z: .134563953}
-        preQ: {x: .671104729, y: .271359086, z: .222752064, w: -.652965724}
-        postQ: {x: -.0602413118, y: .699588299, z: .708136678, w: .0740909576}
+        preQ: {x: .671104729, y: .271359086, z: .222752005, w: -.652965724}
+        postQ: {x: -.0602412522, y: .699588418, z: .708136678, w: .0740909576}
         length: .336409867
         modified: 1
     - boneName: kneeLeft
@@ -561,7 +596,7 @@ ModelImporter:
         min: {x: -90, y: 0, z: -80}
         max: {x: 90, y: 0, z: 80}
         value: {x: .360248029, y: 0, z: .180124015}
-        preQ: {x: -.522751391, y: .488217711, z: .503558278, w: .484565228}
+        preQ: {x: -.522751391, y: .488217771, z: .503558218, w: .484565288}
         postQ: {x: -.70662117, y: .0503563583, z: .0624106824, w: .703033209}
         length: .450310022
         modified: 1
@@ -571,7 +606,7 @@ ModelImporter:
         min: {x: -90, y: 0, z: -80}
         max: {x: 90, y: 0, z: 80}
         value: {x: .360245198, y: 0, z: .180122599}
-        preQ: {x: -.488218039, y: -.522751093, z: -.4845649, w: .503558636}
+        preQ: {x: -.488218039, y: -.522751033, z: -.48456493, w: .503558576}
         postQ: {x: -.0503568053, y: -.70662117, z: -.70303309, w: .0624111891}
         length: .450306505
         modified: 1
@@ -582,7 +617,7 @@ ModelImporter:
         max: {x: 0, y: 30.0000019, z: 50}
         value: {x: .0936371088, y: 0, z: .0468185544}
         preQ: {x: -.706962824, y: -.0142677426, z: .0142677426, w: .706962824}
-        postQ: {x: 2.98023224e-08, y: -8.94069672e-08, z: -.420162261, w: -.907449007}
+        postQ: {x: 5.96046448e-08, y: -5.96046448e-08, z: -.420162231, w: -.907449067}
         length: .117046386
         modified: 1
     - boneName: ankleRight
@@ -592,7 +627,7 @@ ModelImporter:
         max: {x: 0, y: 30.0000019, z: 50}
         value: {x: .0936400443, y: 0, z: .0468200222}
         preQ: {x: .0142677426, y: -.706962824, z: -.706962824, w: .0142677426}
-        postQ: {x: -7.4505806e-08, y: -2.23517418e-08, z: -.907449007, w: .420162261}
+        postQ: {x: -5.21540642e-08, y: -5.21540642e-08, z: -.907449007, w: .420162201}
         length: .117050052
         modified: 1
     - boneName: torso
@@ -631,8 +666,8 @@ ModelImporter:
         min: {x: -90, y: -100, z: -60.0000038}
         max: {x: 90, y: 100, z: 100}
         value: {x: .138180062, y: 0, z: .0690900311}
-        preQ: {x: .209036157, y: -.0147065548, z: .917632699, w: -.337694973}
-        postQ: {x: .000951884547, y: .0885570869, z: .00226803008, w: .99606812}
+        preQ: {x: .209036112, y: -.014706552, z: .917632639, w: -.337694943}
+        postQ: {x: .000951884431, y: .0885570794, z: .00226802938, w: .99606806}
         length: .172725067
         modified: 1
     - boneName: shoulderRight
@@ -641,8 +676,8 @@ ModelImporter:
         min: {x: -90, y: -100, z: -60.0000038}
         max: {x: 90, y: 100, z: 100}
         value: {x: .138179675, y: 0, z: .0690898374}
-        preQ: {x: .0147063872, y: -.209036142, z: -.337694287, w: .917632937}
-        postQ: {x: .00226649828, y: -.99606806, z: -.000951910159, w: .0885572135}
+        preQ: {x: .0147063863, y: -.209036127, z: -.337694287, w: .917632878}
+        postQ: {x: .00226649782, y: -.99606806, z: -.000951910159, w: .0885572135}
         length: .17272459
         modified: 1
     - boneName: elbowLeft
@@ -651,8 +686,8 @@ ModelImporter:
         min: {x: -90, y: 0, z: -80}
         max: {x: 90, y: 0, z: 80}
         value: {x: .222431064, y: 0, z: .111215532}
-        preQ: {x: .55089128, y: -.456784964, z: .438140035, w: .543966532}
-        postQ: {x: .706691921, y: -.0327128619, z: .0167727806, w: .706565678}
+        preQ: {x: .550891221, y: -.456784964, z: .438140035, w: .543966532}
+        postQ: {x: .706691861, y: -.0327128656, z: .0167727787, w: .706565678}
         length: .27803883
         modified: 1
     - boneName: elbowRight
@@ -661,8 +696,8 @@ ModelImporter:
         min: {x: -90, y: 0, z: -80}
         max: {x: 90, y: 0, z: 80}
         value: {x: .222430974, y: 0, z: .111215487}
-        preQ: {x: -.438140213, y: .543967187, z: .550890267, w: .456785083}
-        postQ: {x: -.0167740863, y: .706565678, z: .70669204, w: .0327116475}
+        preQ: {x: -.438140273, y: .543967247, z: .550890326, w: .456785113}
+        postQ: {x: -.0167740844, y: .706565619, z: .70669198, w: .0327116437}
         length: .27803871
         modified: 1
     - boneName: wristLeft
@@ -690,20 +725,20 @@ ModelImporter:
       limit:
         min: {x: 0, y: 0, z: -50}
         max: {x: 0, y: 0, z: 50}
-        value: {x: .110813975, y: 0, z: .0554069877}
-        preQ: {x: -5.89197739e-08, y: 5.96046448e-08, z: -4.30049418e-09, w: 1}
-        postQ: {x: -1.18524412e-07, y: 5.96046448e-08, z: -4.30049951e-09, w: 1}
-        length: .138517469
+        value: {x: .11081399, y: 0, z: .0554069951}
+        preQ: {x: -3.78463518e-08, y: -0, z: -4.64473437e-08, w: 1}
+        postQ: {x: -9.74509788e-08, y: -0, z: -4.64473402e-08, w: 1}
+        length: .138517484
         modified: 1
     - boneName: toeRight
       humanName: RightToes
       limit:
         min: {x: 0, y: 0, z: -50}
         max: {x: 0, y: 0, z: 50}
-        value: {x: .110814407, y: 0, z: .0554072037}
-        preQ: {x: -0, y: 6.32202699e-08, z: 1, w: 0}
-        postQ: {x: -0, y: 1.228249e-07, z: 1, w: 0}
-        length: .138518006
+        value: {x: .110814393, y: 0, z: .0554071963}
+        preQ: {x: -0, y: 4.21468478e-08, z: 1, w: 4.21468478e-08}
+        postQ: {x: -0, y: 1.01751475e-07, z: 1, w: 4.21468442e-08}
+        length: .138517991
         modified: 1
     - boneName: mouthLeft1
       humanName: LeftEye
@@ -712,7 +747,7 @@ ModelImporter:
         max: {x: 0, y: 20, z: 15.000001}
         value: {x: .0800000057, y: 0, z: .0400000028}
         preQ: {x: .501512825, y: .498482555, z: .501512825, w: -.498482555}
-        postQ: {x: 1.05367111e-08, y: -.410524815, z: -1.05367111e-08, w: .91184938}
+        postQ: {x: -5.73027948e-20, y: -.410524905, z: -5.73027948e-20, w: .911849439}
         length: .100000001
         modified: 1
     - boneName: mouthRight1
@@ -722,7 +757,7 @@ ModelImporter:
         max: {x: 0, y: 20, z: 15.000001}
         value: {x: .0800000057, y: 0, z: .0400000028}
         preQ: {x: .501512825, y: .498482555, z: .501512825, w: -.498482555}
-        postQ: {x: -.410524815, y: 1.05367111e-08, z: .91184938, w: -1.05367111e-08}
+        postQ: {x: -.410524905, y: -1.53839199e-17, z: .911849439, w: -1.53839199e-17}
         length: .100000001
         modified: 1
     - boneName: mouthBottom1
@@ -731,8 +766,8 @@ ModelImporter:
         min: {x: 0, y: -10, z: -10}
         max: {x: 0, y: 10, z: 10}
         value: {x: .0800000057, y: 0, z: .0400000028}
-        preQ: {x: .544176817, y: .451521426, z: .454811126, w: -.541430354}
-        postQ: {x: .999994755, y: -2.10734239e-08, z: .00323608471, w: 2.10734239e-08}
+        preQ: {x: .544176757, y: .451521456, z: .454811156, w: -.541430414}
+        postQ: {x: .999994755, y: -2.10734239e-08, z: .00323605537, w: 2.10734239e-08}
         length: .100000001
         modified: 1
     - boneName: thumbLeft1
@@ -741,7 +776,7 @@ ModelImporter:
         min: {x: 0, y: -25, z: -20}
         max: {x: 0, y: 25, z: 20}
         value: {x: .0510986634, y: 0, z: .0255493317}
-        preQ: {x: .744811356, y: .026574349, z: .193976358, w: .63790524}
+        preQ: {x: .744811296, y: .0265743751, z: .193976343, w: .63790524}
         postQ: {x: .698502243, y: .109112233, z: .117142111, w: .697471738}
         length: .0638733283
         modified: 1
@@ -751,7 +786,7 @@ ModelImporter:
         min: {x: 0, y: 0, z: -40}
         max: {x: 0, y: 0, z: 35}
         value: {x: .0383239985, y: 0, z: .0191619992}
-        preQ: {x: .684578717, y: .245881081, z: -.0235814173, w: .685812175}
+        preQ: {x: .684578776, y: .24588114, z: -.0235814098, w: .685812175}
         postQ: {x: .671971202, y: .0956609547, z: .14537631, w: .719839811}
         length: .0479049981
         modified: 1
@@ -761,8 +796,8 @@ ModelImporter:
         min: {x: 0, y: -20, z: -50}
         max: {x: 0, y: 20, z: 50}
         value: {x: .0396430939, y: 0, z: .019821547}
-        preQ: {x: .14341858, y: .277321011, z: .314669698, w: .89638555}
-        postQ: {x: .00491782418, y: -.0205673221, z: .0922201797, w: .995514035}
+        preQ: {x: .14341858, y: .277321011, z: .314669669, w: .89638561}
+        postQ: {x: .00491782418, y: -.020567324, z: .0922201872, w: .995514095}
         length: .0495538674
         modified: 1
     - boneName: indexFingerLeft2
@@ -771,8 +806,8 @@ ModelImporter:
         min: {x: 0, y: 0, z: -45}
         max: {x: 0, y: 0, z: 45}
         value: {x: .0349539891, y: 0, z: .0174769945}
-        preQ: {x: .0140701644, y: -.00730301673, z: .434962481, w: .900309086}
-        postQ: {x: .00483215367, y: -.00127502345, z: .141057163, w: .989988923}
+        preQ: {x: .0140701644, y: -.00730301626, z: .434962481, w: .900309086}
+        postQ: {x: .00483215274, y: -.00127502519, z: .141057163, w: .989988863}
         length: .0436924845
         modified: 1
     - boneName: indexFingerLeft3
@@ -781,8 +816,8 @@ ModelImporter:
         min: {x: 0, y: 0, z: -45}
         max: {x: 0, y: 0, z: 45}
         value: {x: .0262154918, y: 0, z: .0131077459}
-        preQ: {x: .0160052087, y: -.00104043994, z: .443982214, w: .895892024}
-        postQ: {x: .00430340227, y: -.00498583354, z: .14107433, w: .989977181}
+        preQ: {x: .0160052069, y: -.00104043982, z: .443982214, w: .895891964}
+        postQ: {x: .00430340087, y: -.00498583494, z: .14107433, w: .989977121}
         length: .0327693634
         modified: 1
     - boneName: middleFingerLeft1
@@ -791,8 +826,8 @@ ModelImporter:
         min: {x: 0, y: -7.50000048, z: -50}
         max: {x: 0, y: 7.50000048, z: 50}
         value: {x: .047727637, y: 0, z: .0238638185}
-        preQ: {x: .138949767, y: .341704905, z: .327426225, w: .86989814}
-        postQ: {x: .00649326574, y: .0168120433, z: .175683931, w: .984281659}
+        preQ: {x: .138949797, y: .341704905, z: .327426255, w: .8698982}
+        postQ: {x: .00649327319, y: .016812047, z: .175683945, w: .984281659}
         length: .0596595444
         modified: 1
     - boneName: middleFingerLeft2
@@ -801,8 +836,8 @@ ModelImporter:
         min: {x: 0, y: 0, z: -45}
         max: {x: 0, y: 0, z: 45}
         value: {x: .0433257967, y: 0, z: .0216628984}
-        preQ: {x: .0169750564, y: .000927423127, z: .464944571, w: .885176599}
-        postQ: {x: .00926533621, y: .00561735546, z: .164199561, w: .986367583}
+        preQ: {x: .0169750843, y: .000927424815, z: .464944601, w: .885176539}
+        postQ: {x: .00926534366, y: .00561735686, z: .164199576, w: .986367583}
         length: .0541572459
         modified: 1
     - boneName: middleFingerLeft3
@@ -811,8 +846,8 @@ ModelImporter:
         min: {x: 0, y: 0, z: -45}
         max: {x: 0, y: 0, z: 45}
         value: {x: .0324943475, y: 0, z: .0162471738}
-        preQ: {x: .0184556842, y: .00374645391, z: .464888066, w: .885169148}
-        postQ: {x: .00915724691, y: -.00108657964, z: .180962995, w: .983446598}
+        preQ: {x: .0184557103, y: .00374645623, z: .464888126, w: .885169148}
+        postQ: {x: .00915725529, y: -.00108657684, z: .180963039, w: .983446717}
         length: .0406179354
         modified: 1
     - boneName: pinkyFingerLeft1
@@ -831,7 +866,7 @@ ModelImporter:
         min: {x: 0, y: 0, z: -45}
         max: {x: 0, y: 0, z: 45}
         value: {x: .0299734678, y: 0, z: .0149867339}
-        preQ: {x: .0244083796, y: -.00881911069, z: .442065597, w: .896607161}
+        preQ: {x: .0244083814, y: -.00881911069, z: .442065626, w: .89660722}
         postQ: {x: .00874666311, y: -.00628162548, z: .139174923, w: .990209281}
         length: .0374668352
         modified: 1
@@ -851,8 +886,8 @@ ModelImporter:
         min: {x: 0, y: -25, z: -20}
         max: {x: 0, y: 25, z: 20}
         value: {x: .0510984622, y: 0, z: .0255492311}
-        preQ: {x: -.193974629, y: .637904644, z: .744812429, w: -.026571719}
-        postQ: {x: .117142066, y: -.69747144, z: -.698502898, w: .109109819}
+        preQ: {x: -.193974674, y: .637904644, z: .74481225, w: -.0265716705}
+        postQ: {x: .117142119, y: -.697471499, z: -.698502839, w: .109109789}
         length: .0638730749
         modified: 1
     - boneName: thumbRight2
@@ -861,8 +896,8 @@ ModelImporter:
         min: {x: 0, y: 0, z: -40}
         max: {x: 0, y: 0, z: 35}
         value: {x: .0383238457, y: 0, z: .0191619229}
-        preQ: {x: .0235813148, y: .685812891, z: .684578836, w: -.24587889}
-        postQ: {x: .145380244, y: -.719839096, z: -.671971023, w: .0956618637}
+        preQ: {x: .0235812385, y: .68581295, z: .684578776, w: -.24587889}
+        postQ: {x: .145380318, y: -.719839156, z: -.671970963, w: .0956618488}
         length: .0479048043
         modified: 1
     - boneName: indexFingerRight1
@@ -871,8 +906,8 @@ ModelImporter:
         min: {x: 0, y: -20, z: -50}
         max: {x: 0, y: 20, z: 50}
         value: {x: .0396426693, y: 0, z: .0198213346}
-        preQ: {x: -.314668059, y: .89638555, z: .143417478, w: -.277323455}
-        postQ: {x: .0922228694, y: -.995513797, z: -.0049177995, w: -.020566795}
+        preQ: {x: -.314668089, y: .89638561, z: .143417493, w: -.277323484}
+        postQ: {x: .0922228843, y: -.995513797, z: -.00491779903, w: -.0205667913}
         length: .0495533347
         modified: 1
     - boneName: indexFingerRight2
@@ -881,8 +916,8 @@ ModelImporter:
         min: {x: 0, y: 0, z: -45}
         max: {x: 0, y: 0, z: 45}
         value: {x: .0349341743, y: 0, z: .0174670871}
-        preQ: {x: -.434969127, y: .90030539, z: .0140833976, w: .00733257644}
-        postQ: {x: .141132832, y: -.989977956, z: -.00483402889, w: -.00129468739}
+        preQ: {x: -.434969127, y: .90030539, z: .0140833966, w: .00733257644}
+        postQ: {x: .141132861, y: -.989978075, z: -.00483402982, w: -.00129468739}
         length: .0436677188
         modified: 1
     - boneName: indexFingerRight3
@@ -891,8 +926,8 @@ ModelImporter:
         min: {x: 0, y: 0, z: -45}
         max: {x: 0, y: 0, z: 45}
         value: {x: .0262006316, y: 0, z: .0131003158}
-        preQ: {x: -.444050252, y: .89585799, z: .0160200037, w: .00105604657}
-        postQ: {x: .141149983, y: -.989966214, z: -.00430498039, w: -.00500547281}
+        preQ: {x: -.444050282, y: .89585799, z: .0160200056, w: .00105604634}
+        postQ: {x: .141149998, y: -.989966214, z: -.00430498039, w: -.00500547234}
         length: .0327507891
         modified: 1
     - boneName: middleFingerRight1
@@ -901,7 +936,7 @@ ModelImporter:
         min: {x: 0, y: -7.50000048, z: -50}
         max: {x: 0, y: 7.50000048, z: 50}
         value: {x: .0477281399, y: 0, z: .02386407}
-        preQ: {x: -.327422678, y: .869899333, z: .138948634, w: -.34170568}
+        preQ: {x: -.327422708, y: .869899392, z: .138948649, w: -.34170571}
         postQ: {x: .175678506, y: -.984282613, z: -.00649318192, w: .0168124009}
         length: .059660174
         modified: 1
@@ -911,8 +946,8 @@ ModelImporter:
         min: {x: 0, y: 0, z: -45}
         max: {x: 0, y: 0, z: 45}
         value: {x: .0433258675, y: 0, z: .0216629338}
-        preQ: {x: -.464945853, y: .885175824, z: .0169752985, w: -.000927537098}
-        postQ: {x: .164201051, y: -.986367345, z: -.00926539209, w: .00561740249}
+        preQ: {x: -.464945883, y: .885175884, z: .0169752985, w: -.000927537971}
+        postQ: {x: .164201081, y: -.986367464, z: -.00926539302, w: .00561740343}
         length: .0541573353
         modified: 1
     - boneName: middleFingerRight3
@@ -931,8 +966,8 @@ ModelImporter:
         min: {x: 0, y: -20, z: -50}
         max: {x: 0, y: 20, z: 50}
         value: {x: .0366417542, y: 0, z: .0183208771}
-        preQ: {x: -.322234988, y: .826098204, z: .151394412, w: -.436813712}
-        postQ: {x: .107638076, y: -.994091332, z: -.00414235471, w: .0133891348}
+        preQ: {x: -.322234988, y: .826098144, z: .151394397, w: -.436813682}
+        postQ: {x: .107638083, y: -.994091332, z: -.00414235517, w: .0133891357}
         length: .0458021909
         modified: 1
     - boneName: pinkyFingerRight2
@@ -941,7 +976,7 @@ ModelImporter:
         min: {x: 0, y: 0, z: -45}
         max: {x: 0, y: 0, z: 45}
         value: {x: .0299744457, y: 0, z: .0149872229}
-        preQ: {x: -.442061037, y: .896609545, z: .0244062543, w: .00881765597}
+        preQ: {x: -.442061037, y: .896609485, z: .0244062524, w: .00881765597}
         postQ: {x: .139169842, y: -.990209997, z: -.00874600559, w: -.00627993792}
         length: .0374680571
         modified: 1
@@ -951,7 +986,7 @@ ModelImporter:
         min: {x: 0, y: 0, z: -45}
         max: {x: 0, y: 0, z: 45}
         value: {x: .0224808343, y: 0, z: .0112404171}
-        preQ: {x: -.441981077, y: .896633029, z: .0258139409, w: .00596222002}
+        preQ: {x: -.441981107, y: .896633089, z: .0258139428, w: .00596222049}
         postQ: {x: .174427778, y: -.984255016, z: -.0101706404, w: -.0267149489}
         length: .0281010419
         modified: 1
