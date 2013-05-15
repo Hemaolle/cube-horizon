@@ -32,10 +32,13 @@ public class TextAndOrAudioTrigger : MonoBehaviour {
 	public static string latestText;
 	
 	private GameObject guiTextObject;
+	private GameObject speachAudioSource;
 	
 	// Use this for initialization
 	void Start () {
 		guiTextObject = GameObject.Find("TextDisplay");
+		speachAudioSource = GameObject.Find ("SpeachAudioSource");
+		
 	}
 	
 	IEnumerator OnTriggerEnter(Collider collider)
@@ -44,7 +47,8 @@ public class TextAndOrAudioTrigger : MonoBehaviour {
 		
 		gameObject.collider.enabled = false;
 		if(playAudio && audio.clip != null)
-			audio.Play();
+			speachAudioSource.audio.clip = audio.clip;
+			speachAudioSource.audio.Play();
 				
 		if (displayText)
 		{

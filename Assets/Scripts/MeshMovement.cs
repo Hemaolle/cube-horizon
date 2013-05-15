@@ -21,7 +21,7 @@ public class MeshMovement : MonoBehaviour
     public float gravity=40;
     public float terminalVelocity=100;
 	
-	[HideInInspector]
+	
 	public int goingForward = 1;
    
     //private Vector3 v = Vector3.zero;

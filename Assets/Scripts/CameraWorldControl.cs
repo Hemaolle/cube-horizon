@@ -107,8 +107,8 @@ public class CameraWorldControl : MonoBehaviour
     {
         Camera camera = GetComponentInChildren<Camera>();
         Vector3 start = camera.transform.position;
-        Vector3 end = start + transform.TransformDirection(Vector3.back) * zoomAmount;
-        if (zoomedOut) end = start - transform.TransformDirection(Vector3.back) * zoomAmount;
+        Vector3 end = start + camera.transform.TransformDirection(Vector3.back) * zoomAmount;
+        if (zoomedOut) end = start - camera.transform.TransformDirection(Vector3.back) * zoomAmount;
         float t = 0.0f;
         float rate = 1 / zoomSeconds;
 		
