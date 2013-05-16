@@ -43,31 +43,34 @@ public class TextAndOrAudioTrigger : MonoBehaviour {
 	
 	IEnumerator OnTriggerEnter(Collider collider)
 	{
-		latestText = textToDisplay;
-		
-		gameObject.collider.enabled = false;
-		if(playAudio && audio.clip != null)
-			speachAudioSource.audio.clip = audio.clip;
-			speachAudioSource.audio.Play();
-				
-		if (displayText)
+		if (collider.tag == "Player")
 		{
-			guiTextObject.guiText.text = textToDisplay;
-			guiTextObject.guiText.enabled = true;
+			latestText = textToDisplay;
+			
+			gameObject.collider.enabled = false;
+			if(playAudio && audio.clip != null)
+				speachAudioSource.audio.clip = audio.clip;
+				speachAudioSource.audio.Play();
+					
+			if (displayText)
+			{
+				guiTextObject.guiText.text = textToDisplay;
+				guiTextObject.guiText.enabled = true;
+			}
+			
+			yield return new WaitForSeconds(displayDuration);
+			
+			if(displayText && latestText == textToDisplay)			
+			{
+				guiTextObject.guiText.enabled = false;			
+				//Debug.Log("Hiding text: " + textToDisplay);	
+			}
+					
+			yield return new WaitForSeconds(pauseBetweenDisplays);
+			
+			if (!displayOnlyOnce)
+				gameObject.collider.enabled = true;
 		}
-		
-		yield return new WaitForSeconds(displayDuration);
-		
-		if(displayText && latestText == textToDisplay)			
-		{
-			guiTextObject.guiText.enabled = false;			
-			//Debug.Log("Hiding text: " + textToDisplay);	
-		}
-				
-		yield return new WaitForSeconds(pauseBetweenDisplays);
-		
-		if (!displayOnlyOnce)
-			gameObject.collider.enabled = true;
 	}
 	
 	// Update is called once per frame

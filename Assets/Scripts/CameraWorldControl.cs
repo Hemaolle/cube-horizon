@@ -72,7 +72,8 @@ public class CameraWorldControl : MonoBehaviour
         else start = transform.eulerAngles.y;
         end = start + rotationAmount;
         previous = start;
-
+		if (gameObject.name != "CamFollow" && !rotateY)
+			character.GetComponent<Animator>().SetBool("Turning", true);
         while (true)
         {
             float factor = rotationCurve.Evaluate(t);
@@ -99,7 +100,8 @@ public class CameraWorldControl : MonoBehaviour
             Globals.ChangeGravity(transform);
             yield return null;
         }
-
+		if (gameObject.name != "CamFollow" && !rotateY)
+			character.GetComponent<Animator>().SetBool("Turning", false);
         rotating = 0;
     }
 

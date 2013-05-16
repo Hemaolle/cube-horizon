@@ -28,7 +28,8 @@ public class MineralControl : MonoBehaviour {
 			Globals.respawnAt = respawn;
 			
 			Destroy(gameObject);
-			Globals.currentMinerals++;	
+			Globals.currentMinerals++;
+			transform.parent.audio.Play();
 		}
 	}
 						

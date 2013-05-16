@@ -30,6 +30,7 @@ public class MeshMovement : MonoBehaviour
     private Rigidbody body;
 	private bool jumping;
 	private float jumpTime;
+	private float groundHitTime;
 	private bool falling;
 	
 	private Animator anim;
@@ -40,11 +41,12 @@ public class MeshMovement : MonoBehaviour
         body = GetComponent<Rigidbody>();
 		anim = GetComponent<Animator>();
         distToGround = collider.bounds.extents.y;
+		groundHitTime = Time.timeSinceLevelLoad;
     }
 
     void Update () 
     {
-        HandleWalk();
+        HandleWalk();//
 
         HandleJump();
 
@@ -61,19 +63,40 @@ public class MeshMovement : MonoBehaviour
 		if (jumping == true && isGrounded() && Time.timeSinceLevelLoad - jumpTime > 0.5) {
 			jumping = false;
 			anim.SetBool("Jump",false);
+			groundHitTime = Time.timeSinceLevelLoad;
 		}
-		if (jumping == false && !isGrounded())
+		//Debug.Log(!jumping + " " + !isGrounded() + " " + !falling + " " + (Time.timeSinceLevelLoad - groundHitTime > 0.1));
+		if (!jumping && !isGrounded() && !falling && Time.timeSinceLevelLoad - groundHitTime > 0.1)
 		{
 			anim.SetBool("Falling", true);
-			falling = true;	
+			falling = true;
+			//Debug.Log ("Falling");
+			
 		}
 		if (falling == true && isGrounded())
 		{
 			anim.SetBool("Falling",false);
-			falling = false;	
+			falling = false;
+			groundHitTime = Time.timeSinceLevelLoad;
 		}
+		
 			
     }
+	
+	//This was supposed to fix sticking to objects
+	/*void FixedUpdate()
+	{
+		RaycastHit hit;
+		Vector3 horizontalMove = body.velocity;
+		horizontalMove.y = 0;
+		horizontalMove.Normalize();
+		float distance =  horizontalMove.magnitude * Time.fixedDeltaTime; 
+		if(body.SweepTest(transform.forward, out hit, collider.bounds.extents.x))
+		{
+			Debug.Log ("fixing update");
+			body.velocity = new Vector3(0, body.velocity.y, 0);	
+		}	
+	}*/
 
 
     /**********************************************************************
@@ -113,7 +136,7 @@ public class MeshMovement : MonoBehaviour
     private bool isGrounded()
     {			
         int layermask = 1; //Only check default layer
-        return Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), distToGround + 0.1f, layermask);
+        return Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), distToGround, layermask);
     }
 
 

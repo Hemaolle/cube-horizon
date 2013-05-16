@@ -13,16 +13,28 @@ public class Goal : MonoBehaviour {
 	public string nextLevelName;
 	/** Time to wait before loading the next level: */
 	public float endDelay = 0.0f;
+	public float fadeDuration = 3.0f;
 	
 	IEnumerator OnTriggerEnter(Collider other)
     {
 		if (other.tag == "Player")
 		{
-			other.gameObject.GetComponent<NuotioMovement>().enabled = false;
+			other.gameObject.GetComponent<MeshMovement>().enabled = false;
 			other.gameObject.GetComponent<CameraWorldControl>().enabled = false;
 			other.gameObject.rigidbody.Sleep();
 			if (endDelay > 0) yield return new WaitForSeconds(endDelay);
-	        Application.LoadLevel(nextLevelName);
+			StartCoroutine(DoTransition());			
 		}
     }
+	
+	IEnumerator DoTransition() 
+	{
+		GameObject camera = GameObject.Find("Main Camera");
+		SceneDirection sd = camera.GetComponent<SceneDirection>();
+		sd.FadeToBlack(fadeDuration);
+		yield return new WaitForSeconds(fadeDuration);
+		
+		Globals.ResetMinerals();
+	    Application.LoadLevel(nextLevelName);
+	}
 }

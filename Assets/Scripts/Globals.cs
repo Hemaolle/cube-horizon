@@ -31,4 +31,24 @@ public class Globals : MonoBehaviour {
         forwardDirection = transform.TransformDirection(Vector3.right);
         forwardDirection.Normalize();
     }
+	
+	public static void ResetMinerals() 
+	{
+		maxMinerals = 0;
+		currentMinerals = 0;
+	}
+	
+	public static void FadeToBlack(float durationSeconds) 
+	{
+		GameObject camera = GameObject.Find("Camera");
+		SceneDirection sd = camera.GetComponent<SceneDirection>();
+		sd.FadeToBlack(durationSeconds);
+	}
+	
+	public static void FadeFromBlack(float durationSeconds) 
+	{
+		GameObject camera = GameObject.Find("Camera");
+		SceneDirection sd = camera.GetComponent<SceneDirection>();
+		sd.FadeFromBlack(durationSeconds);
+	}
 }

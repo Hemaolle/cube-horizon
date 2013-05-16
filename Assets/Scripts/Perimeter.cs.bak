@@ -1,0 +1,47 @@
+﻿/*****************************************************
+ * Saves the player from falling to far into the void.
+ * Player is returned to the gameobject indicated by
+ * the property 'respawnAt'.
+ *
+ * Author: Mikko Jakonen
+ * Version: 0.2
+ *****************************************************/
+using UnityEngine;
+using System.Collections;
+
+class Perimeter : MonoBehaviour 
+{
+    private GameObject respawnAt;
+	private float fadeOutDuration = 3.0f;
+	private float fadeInDuration = 3.0f;
+    
+    void Start()
+    {
+        Globals.respawnAt = GameObject.Find("Start");	
+    }
+
+    void OnTriggerExit(Collider other)
+    {   
+        //If some child of character collides we still want the whole character.
+        //GameObject rootObject = other.transform.root.gameObject;
+		GameObject rootObject = other.gameObject;
+		
+        if (rootObject.tag == "Player") StartCoroutine(DoTransition(rootObject));
+    }
+	
+	IEnumerator DoTransition(GameObject player) 
+	{
+		GameObject camera = GameObject.Find("Main Camera");
+		SceneDirection sd = camera.GetComponent<SceneDirection>();
+		sd.FadeToBlack(fadeOutDuration);
+		Debug.Log ("Going to call waitforseconds");
+		yield return new WaitForSeconds(fadeOutDuration);
+		
+		player.transform.position = Globals.respawnAt.transform.position;
+        player.transform.rotation = Globals.respawnAt.transform.rotation;
+        player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+		
+		Debug.Log ("Going to call fade in");
+		sd.FadeFromBlack(fadeInDuration);
+	}
+}
