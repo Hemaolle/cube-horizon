@@ -15,6 +15,7 @@ public class MineralLight : MonoBehaviour {
     
     private GameObject mineral;
     private bool lightsOn = true;
+    private bool initialized = false;
     private Light[] lights;
     
     void OnTriggerEnter(Collider other) 
@@ -23,12 +24,13 @@ public class MineralLight : MonoBehaviour {
         if (other.gameObject.name == "Mineral") 
         {
             mineral = other.gameObject;
+            initialized = true;
         }
     }
     
     void Update() 
     {
-        if (lightsOn && mineral == null) StartCoroutine(Flicker());
+        if (initialized && lightsOn && mineral == null) StartCoroutine(Flicker());
     }
     
     /** Turns off all lightbulbs on this object. */

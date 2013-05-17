@@ -1,8 +1,8 @@
 /****************************************************
- * Movement script for the Nuotio game
+ * Movement script for the Kaamos game.
  * 
  * Author: Mikko Jakonen, Oskari Leppäaho
- * Version: 0.4
+ * Version: 0.5
  ****************************************************/
 using UnityEngine;
 using System.Collections;
@@ -20,28 +20,30 @@ public class MeshMovement : MonoBehaviour
     //gravity:
     public float gravity=40;
     public float terminalVelocity=100;
-	
-	
-	public int goingForward = 1;
+    
+    
+    public int goingForward = 1;
    
     //private Vector3 v = Vector3.zero;
     private bool grounded;
     private float distToGround;
+    private float horizDist;
     private Rigidbody body;
-	private bool jumping;
-	private float jumpTime;
-	private float groundHitTime;
-	private bool falling;
-	
-	private Animator anim;
-	
-	
+    private bool jumping;
+    private float jumpTime;
+    private float groundHitTime;
+    private bool falling;
+    
+    private Animator anim;
+    
+    
     void Start ()
     {
         body = GetComponent<Rigidbody>();
-		anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         distToGround = collider.bounds.extents.y;
-		groundHitTime = Time.timeSinceLevelLoad;
+        horizDist = collider.bounds.extents.z;
+        groundHitTime = Time.timeSinceLevelLoad;
     }
 
     void Update () 
@@ -51,52 +53,52 @@ public class MeshMovement : MonoBehaviour
         HandleJump();
 
         body.AddForce(transform.TransformDirection(Vector3.down) * gravity * body.mass);
-		float v = transform.InverseTransformDirection(body.velocity).z;
-		if(transform.InverseTransformDirection(body.velocity).z < 0 && Input.GetAxis("Horizontal") * goingForward < 0) {
-			goingForward = goingForward * -1;
-			transform.Rotate(0,180,0);
-		}
-		
-		Mathf.Abs(v);
-		
-		anim.SetFloat("Speed", v);
-		if (jumping == true && isGrounded() && Time.timeSinceLevelLoad - jumpTime > 0.5) {
-			jumping = false;
-			anim.SetBool("Jump",false);
-			groundHitTime = Time.timeSinceLevelLoad;
-		}
-		//Debug.Log(!jumping + " " + !isGrounded() + " " + !falling + " " + (Time.timeSinceLevelLoad - groundHitTime > 0.1));
-		if (!jumping && !isGrounded() && !falling && Time.timeSinceLevelLoad - groundHitTime > 0.1)
-		{
-			anim.SetBool("Falling", true);
-			falling = true;
-			//Debug.Log ("Falling");
-			
-		}
-		if (falling == true && isGrounded())
-		{
-			anim.SetBool("Falling",false);
-			falling = false;
-			groundHitTime = Time.timeSinceLevelLoad;
-		}
-		
-			
+        float v = transform.InverseTransformDirection(body.velocity).z;
+        if(transform.InverseTransformDirection(body.velocity).z < 0 && Input.GetAxis("Horizontal") * goingForward < 0) {
+            goingForward = goingForward * -1;
+            transform.Rotate(0,180,0);
+        }
+        
+        Mathf.Abs(v);
+        
+        anim.SetFloat("Speed", v);
+        if (jumping == true && isGrounded() && Time.timeSinceLevelLoad - jumpTime > 0.5) {
+            jumping = false;
+            anim.SetBool("Jump",false);
+            groundHitTime = Time.timeSinceLevelLoad;
+        }
+        //Debug.Log(!jumping + " " + !isGrounded() + " " + !falling + " " + (Time.timeSinceLevelLoad - groundHitTime > 0.1));
+        if (!jumping && !isGrounded() && !falling && Time.timeSinceLevelLoad - groundHitTime > 0.1)
+        {
+            anim.SetBool("Falling", true);
+            falling = true;
+            //Debug.Log ("Falling");
+            
+        }
+        if (falling == true && isGrounded())
+        {
+            anim.SetBool("Falling",false);
+            falling = false;
+            groundHitTime = Time.timeSinceLevelLoad;
+        }
+        
+            
     }
-	
-	//This was supposed to fix sticking to objects
-	/*void FixedUpdate()
-	{
-		RaycastHit hit;
-		Vector3 horizontalMove = body.velocity;
-		horizontalMove.y = 0;
-		horizontalMove.Normalize();
-		float distance =  horizontalMove.magnitude * Time.fixedDeltaTime; 
-		if(body.SweepTest(transform.forward, out hit, collider.bounds.extents.x))
-		{
-			Debug.Log ("fixing update");
-			body.velocity = new Vector3(0, body.velocity.y, 0);	
-		}	
-	}*/
+    
+    //This was supposed to fix sticking to objects
+    /*void FixedUpdate()
+    {
+        RaycastHit hit;
+        Vector3 horizontalMove = body.velocity;
+        horizontalMove.y = 0;
+        horizontalMove.Normalize();
+        float distance =  horizontalMove.magnitude * Time.fixedDeltaTime; 
+        if(body.SweepTest(transform.forward, out hit, collider.bounds.extents.x))
+        {
+            Debug.Log ("fixing update");
+            body.velocity = new Vector3(0, body.velocity.y, 0);	
+        }	
+    }*/
 
 
     /**********************************************************************
@@ -109,11 +111,18 @@ public class MeshMovement : MonoBehaviour
         if (Vector3.Project(body.velocity, transform.TransformDirection(Vector3.forward)).magnitude < maxMoveSpeed
             || Vector3.Angle(Vector3.Project(body.velocity, transform.TransformDirection(Vector3.forward)), force) > 170)
         {
-            body.AddForce(force, ForceMode.Impulse);
+            //no force forward if we are blocked that way:
+            if (!(isBlocked() && Vector3.Angle(transform.TransformDirection(Vector3.forward), force) == 0)) 
+                body.AddForce(force, ForceMode.Impulse);
         }
 
     }
 
+    bool isBlocked()
+    {
+        int layermask = 1; //Only check default layer
+        return Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), horizDist, layermask);
+    }
 
 
     /*********************************************************
@@ -125,9 +134,9 @@ public class MeshMovement : MonoBehaviour
         {
             if (Input.GetButtonDown("Jump")) 
             {
-				anim.SetBool("Jump", true);
-				jumping = true;				
-				jumpTime = Time.timeSinceLevelLoad;
+                anim.SetBool("Jump", true);
+                jumping = true;				
+                jumpTime = Time.timeSinceLevelLoad;
                 body.velocity += transform.TransformDirection(Vector3.up) * jumpForce;
             }
         }
