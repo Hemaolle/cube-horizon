@@ -14,38 +14,44 @@ public class CameraWorldControl : MonoBehaviour
     public float rotationSeconds = 1.0f;
     public float zoomAmount = 100.0f;
     public float zoomSeconds = 1.0f;
-	public GameObject character;
+	private GameObject character;
     //direction of rotation: 1 = clockwise, -1 = counter-clockwise, 0 = no rotation
     private int rotating = 0;
     //when set to true, DoRotate() rotates y-axis
     private bool rotateY = false;
-    //zooming: 1 = in, -1 = out, 0 = no zoom
+    //zooming: 
     private bool zooming = false;
 
     private float returnZ;
     private bool zoomedOut = false;
+	
+	void Start() 
+	{
+		character = GameObject.FindGameObjectWithTag("Player");
+	}
 
     void Update () 
     {
-        if (Input.GetButtonDown("RotateR") && rotating == 0 && !zoomedOut)
+		Debug.Log("zom: " + zoomedOut);
+        if (Input.GetButtonDown("RotateR") && rotating == 0 && !zoomedOut && !zooming)
         {
             rotating = -1;
             rotateY = false;
             StartCoroutine(DoRotate());
         }
-        if (Input.GetButtonDown("RotateL") && rotating == 0 && !zoomedOut)
+        if (Input.GetButtonDown("RotateL") && rotating == 0 && !zoomedOut && !zooming)
         {
             rotating = 1;
             rotateY = false;
             StartCoroutine(DoRotate());
         }
-        if (Input.GetButtonDown("RotateR2") && rotating == 0 && !zoomedOut)
+        if (Input.GetButtonDown("RotateR2") && rotating == 0 && !zoomedOut && !zooming)
         {
             rotating = -1;
             rotateY = true;
             StartCoroutine(DoRotate());
         }
-        if (Input.GetButtonDown("RotateL2") && rotating == 0 && !zoomedOut)
+        if (Input.GetButtonDown("RotateL2") && rotating == 0 && !zoomedOut && !zooming)
         {
             rotating = 1;
             rotateY = true;
@@ -72,7 +78,8 @@ public class CameraWorldControl : MonoBehaviour
         else start = transform.eulerAngles.y;
         end = start + rotationAmount;
         previous = start;
-		if (gameObject.name != "CamFollow" && !rotateY)
+		//if (gameObject.name != "CamFollow" && !rotateY)
+		if(!rotateY)
 			character.GetComponent<Animator>().SetBool("Turning", true);
         while (true)
         {
@@ -80,16 +87,19 @@ public class CameraWorldControl : MonoBehaviour
 
             if (!rotateY)
             {
-				if (gameObject.name == "CamFollow")
+				/*if (gameObject.name == "CamFollow")
 					transform.Rotate(-(start + (end - start) * factor - previous),0,0);
                 //transform.Rotate(0,0,-(start + (end - start) * factor - previous));
 				else
-					transform.Rotate(movement.goingForward * -(start + (end - start) * factor - previous),0,0);
+					transform.Rotate(movement.goingForward * -(start + (end - start) * factor - previous),0,0);*/
+				transform.Rotate(-(start + (end - start) * factor - previous),0,0);
+				character.transform.Rotate(movement.goingForward * -(start + (end - start) * factor - previous),0,0);
                 previous = start + (end - start) * factor;
             }
             else
             {
                 transform.Rotate(0, start + (end - start) * factor - previous, 0);
+				character.transform.Rotate(0, start + (end - start) * factor - previous, 0);
                 previous = start + (end - start) * factor;
             }
 
@@ -100,7 +110,8 @@ public class CameraWorldControl : MonoBehaviour
             Globals.ChangeGravity(transform);
             yield return null;
         }
-		if (gameObject.name != "CamFollow" && !rotateY)
+		//if (gameObject.name != "CamFollow" && !rotateY)
+		if(!rotateY)
 			character.GetComponent<Animator>().SetBool("Turning", false);
         rotating = 0;
     }

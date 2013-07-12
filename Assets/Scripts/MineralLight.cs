@@ -26,7 +26,7 @@ public class MineralLight : MonoBehaviour {
             mineral = other.gameObject;
             initialized = true;
         }
-    }
+    }   
     
     void Update() 
     {

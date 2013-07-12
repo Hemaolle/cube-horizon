@@ -2,7 +2,7 @@
  * Movement script for the Kaamos game.
  * 
  * Author: Mikko Jakonen, Oskari Leppäaho
- * Version: 0.5
+ * Version: 0.6
  ****************************************************/
 using UnityEngine;
 using System.Collections;
@@ -46,25 +46,26 @@ public class MeshMovement : MonoBehaviour
         groundHitTime = Time.timeSinceLevelLoad;
     }
 
-    void Update () 
+    bool jumpPressed = false;
+
+    void Update()
     {
-        HandleWalk();//
+        if (Input.GetButtonDown("Jump") && !jumping) jumpPressed = true;
 
-        HandleJump();
-
-        body.AddForce(transform.TransformDirection(Vector3.down) * gravity * body.mass);
         float v = transform.InverseTransformDirection(body.velocity).z;
-        if(transform.InverseTransformDirection(body.velocity).z < 0 && Input.GetAxis("Horizontal") * goingForward < 0) {
+        if (transform.InverseTransformDirection(body.velocity).z < 0 && Input.GetAxis("Horizontal") * goingForward < 0)
+        {
             goingForward = goingForward * -1;
-            transform.Rotate(0,180,0);
+            transform.Rotate(0, 180, 0);
         }
         
-        Mathf.Abs(v);
-        
+        v = Mathf.Abs(v);
+
         anim.SetFloat("Speed", v);
-        if (jumping == true && isGrounded() && Time.timeSinceLevelLoad - jumpTime > 0.5) {
+        if (jumping == true && isGrounded() && Time.timeSinceLevelLoad - jumpTime > 0.5)
+        {
             jumping = false;
-            anim.SetBool("Jump",false);
+            anim.SetBool("Jump", false);
             groundHitTime = Time.timeSinceLevelLoad;
         }
         //Debug.Log(!jumping + " " + !isGrounded() + " " + !falling + " " + (Time.timeSinceLevelLoad - groundHitTime > 0.1));
@@ -73,32 +74,26 @@ public class MeshMovement : MonoBehaviour
             anim.SetBool("Falling", true);
             falling = true;
             //Debug.Log ("Falling");
-            
+
         }
         if (falling == true && isGrounded())
         {
-            anim.SetBool("Falling",false);
+            anim.SetBool("Falling", false);
             falling = false;
             groundHitTime = Time.timeSinceLevelLoad;
         }
         
-            
     }
-    
-    //This was supposed to fix sticking to objects
-    /*void FixedUpdate()
+
+    void FixedUpdate () 
     {
-        RaycastHit hit;
-        Vector3 horizontalMove = body.velocity;
-        horizontalMove.y = 0;
-        horizontalMove.Normalize();
-        float distance =  horizontalMove.magnitude * Time.fixedDeltaTime; 
-        if(body.SweepTest(transform.forward, out hit, collider.bounds.extents.x))
-        {
-            Debug.Log ("fixing update");
-            body.velocity = new Vector3(0, body.velocity.y, 0);	
-        }	
-    }*/
+        HandleWalk();//
+
+        HandleJump();
+
+        body.AddForce(transform.TransformDirection(Vector3.down) * gravity * body.mass);
+
+    }
 
 
     /**********************************************************************
@@ -132,12 +127,14 @@ public class MeshMovement : MonoBehaviour
     {       
         if (isGrounded())
         {
-            if (Input.GetButtonDown("Jump")) 
+            if (jumpPressed) 
             {
+                jumpPressed = false;
                 anim.SetBool("Jump", true);
                 jumping = true;				
                 jumpTime = Time.timeSinceLevelLoad;
-                body.velocity += transform.TransformDirection(Vector3.up) * jumpForce;
+                //body.velocity += transform.TransformDirection(Vector3.up) * jumpForce * Time.deltaTime;
+                body.AddForce(transform.TransformDirection(Vector3.up) * jumpForce, ForceMode.Impulse);
             }
         }
     }

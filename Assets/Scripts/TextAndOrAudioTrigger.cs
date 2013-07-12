@@ -14,6 +14,9 @@
  * Play Audio: If audio file is attached to audio source component
  * 				in the game object and this setting is enabled, an
  * 				audio file will be played.
+ * Conditions:
+ * All Minerals: Only show text if all minerals have been collected.
+ * Not all minerals: Only show if all minerals have not bee collected.
  * 
  * Author: Oskari Leppäaho
  * Version: 0.1
@@ -29,6 +32,8 @@ public class TextAndOrAudioTrigger : MonoBehaviour {
 	public bool displayOnlyOnce = false;
 	public bool displayText = true;
 	public bool playAudio = true;
+	public bool requireAllMinerals = false;
+	public bool requireNotAllMinerals = false;
 	public static string latestText;
 	
 	private GameObject guiTextObject;
@@ -45,6 +50,9 @@ public class TextAndOrAudioTrigger : MonoBehaviour {
 	{
 		if (collider.tag == "Player")
 		{
+			if (requireAllMinerals && Globals.currentMinerals != Globals.maxMinerals) yield break;
+			if (requireNotAllMinerals && Globals.currentMinerals == Globals.maxMinerals) yield break;	
+			
 			latestText = textToDisplay;
 			
 			gameObject.collider.enabled = false;

@@ -1,3 +1,11 @@
+/*************************************************************
+ * Script for displaying the end credits. Makes black bars
+ * on the top and bottom of the screen. Credits appear in the
+ * top.
+ * 
+ * Author: Mikko Jakonen
+ * Version: 1.0
+ ************************************************************/
 using UnityEngine;
 using System.Collections;
 
@@ -20,6 +28,7 @@ public class EndCredits : MonoBehaviour {
                                   "Oskari Leppäaho \n <color=\"#999\">Programmer, modeler</color>",
                                   "Santeri Hämäläinen \n <color=\"#999\">Sound designer, composer</color>",
                                   "Tapio Hänninen \n <color=\"#999\">Voice actor</color>",
+                                  "Sara Keronen \n <color=\"#999\">Voice actor</color>",
                                   "Cube Horizon",
                                   "Thank you for playing!"
                                };
