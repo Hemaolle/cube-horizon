@@ -1,8 +1,14 @@
 using UnityEngine;
 using System.Collections;
 
-public class ButtonNewGame : MonoBehaviour {
-
+public class ButtonNewGame : Button {
+		
+	void Update() {
+		if (hover) {
+			
+		}
+	}
+	
 	IEnumerator OnMouseDown() {
 		SceneDirection director = GetComponent<SceneDirection>();
 		director.FadeToBlack(1.0f);
@@ -11,4 +17,5 @@ public class ButtonNewGame : MonoBehaviour {
 		
 		Application.LoadLevel("Kentta0Valmis");
 	}
+	
 }

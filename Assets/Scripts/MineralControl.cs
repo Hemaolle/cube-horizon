@@ -8,11 +8,6 @@ public class MineralControl : MonoBehaviour {
 		Globals.maxMinerals++;		
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-	
 	public void OnTriggerEnter(Collider collider)
 	{
 		if (collider.gameObject.tag.Equals("Player"))

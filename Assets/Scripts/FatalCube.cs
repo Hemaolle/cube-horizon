@@ -28,22 +28,22 @@ public class FatalCube : MonoBehaviour {
 	{
 		//If some child of character collides we still want the whole character.
 		GameObject rootObject = collision.collider.transform.root.gameObject;
-		
-		if (rootObject.tag == "Player")
+		Debug.Log(collision);
+		if (collision.collider.gameObject.tag == "Player")
         {
-			rootObject.rigidbody.isKinematic = true;
+			character.rigidbody.isKinematic = true;
 			fatalAudio.audio.Play();
 			
 			yield return new WaitForSeconds(2);
 			
-			rootObject.rigidbody.isKinematic = false;
+			character.rigidbody.isKinematic = false;
 			
             rootObject.transform.position = Globals.respawnAt.transform.position;
             rootObject.transform.rotation = Globals.respawnAt.transform.rotation;
 			camFollow.transform.rotation = Globals.respawnAt.transform.rotation;
 			MeshMovement movement = character.GetComponent<MeshMovement>();
 			movement.goingForward = 1;
-            rootObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            character.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
 		
 		
