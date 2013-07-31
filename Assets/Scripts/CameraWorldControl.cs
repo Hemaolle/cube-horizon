@@ -32,7 +32,6 @@ public class CameraWorldControl : MonoBehaviour
 
     void Update () 
     {
-		Debug.Log("zom: " + zoomedOut);
         if (Input.GetButtonDown("RotateR") && rotating == 0 && !zoomedOut && !zooming)
         {
             rotating = -1;
@@ -64,6 +63,12 @@ public class CameraWorldControl : MonoBehaviour
             StartCoroutine(DoZoom());
         } 
     }
+	
+	bool cancelRotate = false;
+	
+	public void CancelRotate() {
+		cancelRotate = true;
+	}
 
     IEnumerator DoRotate()
     {
@@ -73,25 +78,21 @@ public class CameraWorldControl : MonoBehaviour
         float start, end, previous;
 		MeshMovement movement = character.GetComponent<MeshMovement>();
 		
-		
         if (!rotateY) start = transform.eulerAngles.z;
         else start = transform.eulerAngles.y;
         end = start + rotationAmount;
         previous = start;
-		//if (gameObject.name != "CamFollow" && !rotateY)
+
 		if(!rotateY)
 			character.GetComponent<Animator>().SetBool("Turning", true);
         while (true)
         {
+			if (cancelRotate) { cancelRotate = false; break; }
+			
             float factor = rotationCurve.Evaluate(t);
 
             if (!rotateY)
             {
-				/*if (gameObject.name == "CamFollow")
-					transform.Rotate(-(start + (end - start) * factor - previous),0,0);
-                //transform.Rotate(0,0,-(start + (end - start) * factor - previous));
-				else
-					transform.Rotate(movement.goingForward * -(start + (end - start) * factor - previous),0,0);*/
 				transform.Rotate(-(start + (end - start) * factor - previous),0,0);
 				character.transform.Rotate(movement.goingForward * -(start + (end - start) * factor - previous),0,0);
                 previous = start + (end - start) * factor;
@@ -110,7 +111,7 @@ public class CameraWorldControl : MonoBehaviour
             Globals.ChangeGravity(transform);
             yield return null;
         }
-		//if (gameObject.name != "CamFollow" && !rotateY)
+		
 		if(!rotateY)
 			character.GetComponent<Animator>().SetBool("Turning", false);
         rotating = 0;

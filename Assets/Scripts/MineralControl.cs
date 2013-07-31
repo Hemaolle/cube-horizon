@@ -5,7 +5,7 @@ public class MineralControl : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Globals.maxMinerals++;		
+		Globals.maxMinerals++;	
 	}
 	
 	public void OnTriggerEnter(Collider collider)
@@ -18,8 +18,10 @@ public class MineralControl : MonoBehaviour {
 					Globals.respawnAt = child.gameObject;
 			}*/
 			GameObject respawn = new GameObject("Respawn");
+			GameObject camFollow = GameObject.Find("CamFollow");
+			
 			respawn.transform.position = transform.position;
-			respawn.transform.rotation = ChangeToNext90Degrees(collider.gameObject.transform.rotation);
+			respawn.transform.rotation = ChangeToNext90Degrees(camFollow.transform.rotation);
 			Globals.respawnAt = respawn;
 			
 			Destroy(gameObject);

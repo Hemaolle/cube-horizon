@@ -30,6 +30,8 @@ class Perimeter : MonoBehaviour
 		
         if (rootObject.tag == "Player")
         {
+			camFollow.GetComponent<CameraWorldControl>().CancelRotate();
+			
             rootObject.transform.position = Globals.respawnAt.transform.position;
             rootObject.transform.rotation = Globals.respawnAt.transform.rotation;
 			camFollow.transform.rotation = Globals.respawnAt.transform.rotation;

@@ -27,8 +27,10 @@ public class FatalCube : MonoBehaviour {
 	IEnumerator OnCollisionEnter(Collision collision)
 	{
 		//If some child of character collides we still want the whole character.
-		GameObject rootObject = collision.collider.transform.root.gameObject;
+		//GameObject rootObject = collision.collider.transform.root.gameObject;
+		GameObject rootObject = collision.gameObject;
 		Debug.Log(collision);
+		
 		if (collision.collider.gameObject.tag == "Player")
         {
 			character.rigidbody.isKinematic = true;
