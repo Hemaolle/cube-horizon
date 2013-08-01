@@ -4,16 +4,17 @@ using System.Collections;
 public class AlienEffects : MonoBehaviour {
 
 	void PlayParticles() {
-		GetComponent<ParticleSystem>().Play();		
+		ParticleSystem part = GetComponent<ParticleSystem>();
+		if (part != null) part.Play();		
 	}
 	
 	void Disappear() {
-		transform.parent.FindChild("AlienBody").gameObject.SetActive(false);
+		transform.root.FindChild("AlienBody").gameObject.SetActive(false);
 		GetComponent<ParticleSystem>().Stop();
 	}
 	
 	void Appear() {
-		transform.parent.FindChild("AlienBody").gameObject.SetActive(false);
+		transform.root.FindChild("AlienBody").gameObject.SetActive(true);
 		GetComponent<ParticleSystem>().Stop();
 	}
 }

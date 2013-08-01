@@ -26,6 +26,10 @@ public class Goal : MonoBehaviour {
             if (endDelay > 0) yield return new WaitForSeconds(endDelay);
             StartCoroutine(DoTransition());			
         }
+		if (other.gameObject.name == "AlienBody") {
+			//other.gameObject.SetActive(false);
+			other.gameObject.transform.FindChild("AlienTeleportEffect").animation.Play();
+		}
     }
     
     IEnumerator DoTransition() 
