@@ -1,4 +1,4 @@
-cube-horizon
+Cube Horizon
 ============
 A Game created in 2013 on the Game Project course in the University of Jyväskylä.
 
